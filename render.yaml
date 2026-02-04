@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: sydney-events-aggregator-api
+    env: node
+    plan: starter
+    buildCommand: npm run deploy:build
+    startCommand: npm run deploy:start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: TRUST_PROXY
+        value: true
+      - key: SECURE_COOKIES
+        value: true
